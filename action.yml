@@ -1,0 +1,19 @@
+name: 'Product NPM package publisher'
+description: 'Creates an NPM package from product and publishes it to the registry using the appropriate versioning'
+inputs:
+  muse_npm_auth_token:
+    description: 'NPM github Registry auth token, copied in .npmrc'
+    required: true
+  github_ref:
+    description: 'The branch the action is running on'
+    required: false
+  github_event_action:
+    description: 'The event type that triggers the build if the event is a pull request'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+   - ${{ inputs.muse_npm_auth_token }}
+   - ${{ inputs.github_ref }}
+   - ${{ inputs.github_event_action }}
