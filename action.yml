@@ -1,8 +1,11 @@
 name: 'Product NPM package publisher'
 description: 'Creates an NPM package from product and publishes it to the registry using the appropriate versioning'
 inputs:
-  muse_npm_auth_token:
-    description: 'NPM github Registry auth token, copied in .npmrc'
+  user_email:
+    description: 'The GitHub user email associated with the NPM auth token'
+    required: true
+  user_name:
+    description: 'The GitHub user name associated with the NPM auth token'
     required: true
   github_ref:
     description: 'The branch the action is running on'
@@ -11,9 +14,10 @@ inputs:
     description: 'The event type that triggers the build if the event is a pull request'
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node14'
+  main: 'entrypoint.sh'
   args:
-   - ${{ inputs.muse_npm_auth_token }}
-   - ${{ inputs.github_ref }}
-   - ${{ inputs.github_event_action }}
+    - ${{ inputs.user_email }}
+    - ${{ inputs.user_name }}
+    - ${{ inputs.github_ref }}
+    - ${{ inputs.github_event_action }}

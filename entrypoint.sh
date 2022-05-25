@@ -2,17 +2,29 @@
 
 set -e
 
-if [ -z "$INPUT_MUSE_NPM_AUTH_TOKEN" ]
+if [ -z "$MUSE_NPM_AUTH_TOKEN" ]
 then
   echo "Muse NPM auth token must be defined"
   return -1
 fi
 
+if [ -z "$INPUT_USER_EMAIL" ]
+then
+  echo "User email must be defined"
+  return -1
+fi
+
+if [ -z "$INPUT_USER_NAME" ]
+then
+  echo "Username must be defined"
+  return -1
+fi
+
 echo "Updating product version"
 git pull
-git config --global user.email 'dev@wonderbly.com'
-git config --global user.name 'lostmybot'
-echo "//npm.pkg.github.com/:_authToken=$INPUT_MUSE_NPM_AUTH_TOKEN" >> .npmrc
+git config --global user.email $INPUT_USER_EMAIL
+git config --global user.name $INPUT_USER_NAME
+echo "//npm.pkg.github.com/:_authToken=$MUSE_NPM_AUTH_TOKEN" >> .npmrc
 git update-index --assume-unchanged .npmrc
 
 if [ ${{ $INPUT_GITHUB_REF == 'refs/heads/master' }} ]
