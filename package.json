@@ -1,0 +1,12 @@
+{
+  "name": "product-package-publisher",
+  "version": "1.0.0",
+  "main": "entrypoint.sh",
+  "repository": "https://github.com/Lostmyname/product-package-publisher",
+  "author": "Muse Team <emmapalo@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^2.1.1"
+  }
+}
