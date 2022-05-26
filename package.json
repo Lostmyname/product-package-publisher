@@ -1,6 +1,6 @@
 {
   "name": "product-package-publisher",
-  "version": "1.2",
+  "version": "1.3",
   "main": "dist/index.js",
   "repository": "https://github.com/Lostmyname/product-package-publisher",
   "author": "Muse Team <emmapalo@gmail.com>",
