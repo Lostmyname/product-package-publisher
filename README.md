@@ -1,7 +1,14 @@
 # Product NPM package publisher
 
-This Action creates an NPM package from product and publishes it
+This Action creates an NPM package of the project is run into and publishes it
 to the registry using the appropriate versioning.
+
+Certain files that are relevant to package installation and distribution are always included
+in the package. For example, `package.json`, `README.md`, `LICENSE`, and so on.
+
+If there is a "files" list in `package.json`, then only the files specified will be included.
+(If directories are specified, then they will be walked recursively and their contents included,
+subject to the same ignore rules.)
 
 If the action is triggered by a `push` event on the master branch,
 it creates a latest version and it publishes it to the NPM Github
@@ -41,7 +48,7 @@ Used conditionally to define the package versioning.
 ```
 - uses: Lostmyname/product-package-publisher
   env:
-    MUSE_NPM_AUTH_TOKEN: 'my-npm-auth-token'
+    NPM_AUTH_TOKEN: 'my-npm-auth-token'
   with:
     user_email: 'user@example.com'
     user_name: 'user-name'

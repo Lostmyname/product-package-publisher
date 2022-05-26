@@ -2,9 +2,9 @@
 
 set -e
 
-if [ -z "$MUSE_NPM_AUTH_TOKEN" ]
+if [ -z "$NPM_AUTH_TOKEN" ]
 then
-  echo "Muse NPM auth token must be defined"
+  echo "NPM auth token must be defined"
   return -1
 fi
 
@@ -24,7 +24,7 @@ echo "Updating product version"
 git pull
 git config --global user.email $INPUT_USER_EMAIL
 git config --global user.name $INPUT_USER_NAME
-echo "//npm.pkg.github.com/:_authToken=$MUSE_NPM_AUTH_TOKEN" >> .npmrc
+echo "//npm.pkg.github.com/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
 git update-index --assume-unchanged .npmrc
 
 if [ ${{ $INPUT_GITHUB_REF == 'refs/heads/master' }} ]
