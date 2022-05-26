@@ -14,10 +14,5 @@ inputs:
     description: 'The event type that triggers the build if the event is a pull request'
     required: false
 runs:
-  using: 'node14'
+  using: 'node12'
   main: 'entrypoint.sh'
-  args:
-    - ${{ inputs.user_email }}
-    - ${{ inputs.user_name }}
-    - ${{ inputs.github_ref }}
-    - ${{ inputs.github_event_action }}
