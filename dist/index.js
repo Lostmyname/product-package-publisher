@@ -7330,6 +7330,14 @@ module.exports = require("path");
 
 /***/ }),
 
+/***/ 7282:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("process");
+
+/***/ }),
+
 /***/ 3837:
 /***/ ((module) => {
 
@@ -7392,11 +7400,12 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const shell = __nccwpck_require__(3516);
+const { exit } = __nccwpck_require__(7282);
 
 shell.exec('./entrypoint.sh', (error, stdout, stderr) => {
   if (error) {
     console.error(`exec error: ${error}`);
-    return;
+    exit(1);
   }
   console.log(`stdout: ${stdout}`);
   console.error(`stderr: ${stderr}`);
